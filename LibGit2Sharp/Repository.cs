@@ -1030,12 +1030,15 @@ namespace LibGit2Sharp
         }
 
         /// <summary>
-        /// Merge the current fetch heads into the branch pointed at by HEAD.
+        /// Merge the references that were recently fetched.  This will merge
+        /// the remote tracking branch into the current branch, and is
+        /// therefore the second step in performing a pull operation (after
+        /// having performed a fetch).
         /// </summary>
         /// <param name="merger">The <see cref="Signature"/> of who is performing the merge.</param>
         /// <param name="options">Specifies optional parameters controlling merge behavior; if null, the defaults are used.</param>
         /// <returns>The <see cref="MergeResult"/> of the merge.</returns>
-        internal MergeResult MergeFetchHeads(Signature merger, MergeOptions options)
+        public MergeResult MergeFetchedRefs(Signature merger, MergeOptions options)
         {
             Ensure.ArgumentNotNull(merger, "merger");
 

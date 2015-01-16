@@ -224,6 +224,17 @@ namespace LibGit2Sharp
         MergeResult Merge(string committish, Signature merger, MergeOptions options);
 
         /// <summary>
+        /// Merge the references that were recently fetched.  This will merge
+        /// the remote tracking branch into the current branch, and is
+        /// therefore the second step in performing a pull operation (after
+        /// having performed a fetch).
+        /// </summary>
+        /// <param name="merger">The <see cref="Signature"/> of who is performing the merge.</param>
+        /// <param name="options">Specifies optional parameters controlling merge behavior; if null, the defaults are used.</param>
+        /// <returns>The <see cref="MergeResult"/> of the merge.</returns>
+        MergeResult MergeFetchedRefs(Signature merger, MergeOptions options);
+
+        /// <summary>
         /// Cherry picks changes from the commit into the branch pointed at by HEAD.
         /// </summary>
         /// <param name="commit">The commit to cherry pick into branch pointed at by HEAD.</param>
