@@ -75,8 +75,10 @@ namespace LibGit2Sharp
                         throw new ArgumentException(
                             "When overriding the opening of a bare repository, both RepositoryOptions.WorkingDirectoryPath an RepositoryOptions.IndexPath have to be provided.");
                     }
-
-                    isBare = false;
+                    else if (!isWorkDirNull)
+                    {
+                        isBare = false;
+                    }
 
                     if (!isIndexNull)
                     {
